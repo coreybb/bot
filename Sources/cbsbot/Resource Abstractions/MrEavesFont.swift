@@ -25,7 +25,7 @@ enum MrEavesFont: String, CaseIterable {
     case ultra = "Ultra"
     case ultraItalic = "UltraItalic"
     
-    private let prefix: String = "MrEavesXLModOT-"
+    private var prefix: String { "MrEavesXLModOT-" } 
     
 
     func font(size: CGFloat) -> UIFont {
