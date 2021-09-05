@@ -8,7 +8,7 @@
 import UIKit
 
 
-enum MrEavesFont: String, CaseIterable {
+public enum MrEavesFont: String, CaseIterable {
 
     case thin = "Thin"
     case thinItalic = "ThinItalic"
@@ -25,12 +25,12 @@ enum MrEavesFont: String, CaseIterable {
     case ultra = "Ultra"
     case ultraItalic = "UltraItalic"
     
-    private var prefix: String { "MrEavesXLModOT-" } 
+    private var prefix: String { "MrEavesXLModOT-" }
     
 
-    func font(size: CGFloat) -> UIFont {
+    public func font(size: CGFloat) -> UIFont {
         UIFont(name: prefix + rawValue, size: size)!
     }
     
-    var name: String { prefix + rawValue }
+    public var name: String { prefix + rawValue }
 }

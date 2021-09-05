@@ -9,10 +9,15 @@ import UIKit
 
 public let fontBundle = Bundle.module
 
+/// This function must be called in the AppDelegate of any application intending to make use of any fonts included in this package.
 public func registerFonts() {
     
     let mrEavesFontNames: [String] = MrEavesFont.allCases.map { $0.name }
+    let newYorkFontNames: [String] = NewYorkFont.allCases.map { $0.name }
     mrEavesFontNames.forEach {
+        _ = UIFont.registerFont(bundle: .module, fontName: $0, fontExtension: "ttf")
+    }
+    newYorkFontNames.forEach {
         _ = UIFont.registerFont(bundle: .module, fontName: $0, fontExtension: "ttf")
     }
 }
