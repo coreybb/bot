@@ -18,7 +18,7 @@ public func registerFonts() {
         _ = UIFont.registerFont(bundle: .module, fontName: $0, fontExtension: "ttf")
     }
     newYorkFontNames.forEach {
-        _ = UIFont.registerFont(bundle: .module, fontName: $0, fontExtension: "ttf")
+        _ = UIFont.registerFont(bundle: .module, fontName: $0, fontExtension: "otf")
     }
 }
 
