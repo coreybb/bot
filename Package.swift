@@ -4,23 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "cbsbot",
+    name: "CBsBoT",
     platforms: [
         .iOS(.v14)
     ],
     products: [
         .library(
-            name: "cbsbot",
-            targets: ["cbsbot"]),
+            name: "CBsBoT",
+            targets: ["CBsBoT"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "cbsbot",
+            name: "CBsBoT",
             dependencies: [],
             resources: [.process("Resources")]),
         .testTarget(
             name: "cbsbotTests",
-            dependencies: ["cbsbot"]),
+            dependencies: ["CBsBoT"]),
     ]
 )

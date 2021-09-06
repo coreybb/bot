@@ -1,3 +1,3 @@
-# cbsbot
+# CBsBoT
 
-A description of this package.
+CB's back of tricks for iOS.
