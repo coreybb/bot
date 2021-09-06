@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class StretchHeaderCollectionCell: UICollectionViewCell {
+internal class StretchHeaderCollectionCell: UICollectionViewCell {
     
     
     //----------------------------
@@ -38,7 +38,7 @@ public class StretchHeaderCollectionCell: UICollectionViewCell {
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    public override func layoutSubviews() {
+    internal override func layoutSubviews() {
         super.layoutSubviews()
         
         addSubview(containerView)

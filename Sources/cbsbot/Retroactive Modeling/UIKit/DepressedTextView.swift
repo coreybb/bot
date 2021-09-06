@@ -1,80 +1,67 @@
 //
-//  DepressedTextField.swift
+//  DepressedTextView.swift
 //  
 //
-//  Created by Corey Beebe on 9/5/21.
+//  Created by Corey Beebe on 9/6/21.
 //
 
 import UIKit
 
 
-
-public class DepressedTextField: UITextField {
+public class DepressedTextView: UITextView {
 
     
     //-----------------------------
     //  MARK: - Private Properties
     //-----------------------------
     private lazy var innerShadow: CALayer = {
-        let innerShadow = CALayer()
+        let innerShadow: CALayer = CALayer()
         layer.addSublayer(innerShadow)
         return innerShadow
     }()
 
     private let radius: CGFloat
-    private let leadingInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+    private let color: UIColor
     
     
     
     //---------------
     //  MARK: - Init
     //---------------
-    public init(cornerRadius: CGFloat = 0) {
+    public init(cornerRadius: CGFloat = 0, backgroundColor: UIColor = .cardWhite) {
         radius = cornerRadius
-        super.init(frame: .zero)
+        color = backgroundColor
+        super.init(frame: .zero, textContainer: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
     
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: leadingInset)
-    }
-
-    
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: leadingInset)
-    }
-
-    
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: leadingInset)
-    }
-    
-    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
         setup()
     }
+
     
-
-
+    
     //----------------------
     //  MARK: - Private API
     //----------------------
     private func setup() {
         
+        translatesAutoresizingMaskIntoConstraints = false
+        textContainerInset = UIEdgeInsets(top: 24, left: 18, bottom: 24, right: 18)
         innerShadow.frame = bounds
 
-        let path = UIBezierPath(roundedRect: innerShadow.bounds.insetBy(dx: -1, dy: -1), cornerRadius: radius)
-        let cutout = UIBezierPath(roundedRect: innerShadow.bounds, cornerRadius: radius).reversing()
+        let path: UIBezierPath = UIBezierPath(roundedRect: innerShadow.bounds.insetBy(dx: -1, dy: -1), cornerRadius: radius)
+        let cutout: UIBezierPath = UIBezierPath(roundedRect: innerShadow.bounds, cornerRadius: radius).reversing()
 
         path.append(cutout)
         innerShadow.shadowPath = path.cgPath
@@ -96,7 +83,7 @@ public class DepressedTextField: UITextField {
         layer.shadowColor = UIColor.white.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 0.3)
         layer.shadowRadius = 6
-        layer.backgroundColor = UIColor.cardWhite.cgColor
+        layer.backgroundColor = color.cgColor
     }
 }
 

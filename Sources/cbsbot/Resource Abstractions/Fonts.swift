@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 public let fontBundle = Bundle.module
 
 /// This function must be called in the AppDelegate of any application intending to make use of any fonts included in this package.
@@ -47,8 +48,4 @@ extension UIFont {
 
         return true
     }
-}
-
-struct CustomFonts {
-    var text = "Hello, World!"
 }

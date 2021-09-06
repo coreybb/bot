@@ -8,21 +8,21 @@
 import UIKit
 
 
-public class HeaderView: UICollectionReusableView {
+internal class HeaderView: UICollectionReusableView {
     
     
     
     //----------------------------
     //  MARK: - Public Properties
     //----------------------------
-    public var childView: UIView?
+    var childView: UIView?
 
     
     
     //---------------
     //  MARK: - Init
     //---------------
-    public override init(frame: CGRect) {
+    internal override init(frame: CGRect) {
         super.init(frame: .zero)
         
         backgroundColor = .clear

@@ -157,4 +157,3 @@ public class PageController: UIPageViewController, UIPageViewControllerDelegate,
         return firstViewControllerIndex
     }
 }
-

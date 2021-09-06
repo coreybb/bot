@@ -5,7 +5,7 @@
 //  Created by Corey Beebe on 9/5/21.
 //
 
-extension Optional {
+public extension Optional {
     
     func isNil() -> Bool {
         
@@ -23,7 +23,7 @@ extension Optional {
 }
 
 
-extension Optional where Wrapped: Collection {
+public extension Optional where Wrapped: Collection {
     
     func isNilOrEmpty() -> Bool {
         self?.isEmpty ?? true

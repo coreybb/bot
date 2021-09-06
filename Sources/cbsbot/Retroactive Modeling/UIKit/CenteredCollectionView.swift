@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 public extension UICollectionView {
 /// A convenient way to create a UICollectionView and configue it with a CenteredCollectionViewFlowLayout.
 ///

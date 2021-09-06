@@ -8,13 +8,13 @@
 import UIKit
 
 
-public class StretchHeaderLayout: UICollectionViewFlowLayout {
+internal class StretchHeaderLayout: UICollectionViewFlowLayout {
     
     
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    internal override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         let attributes: [UICollectionViewLayoutAttributes]? = super.layoutAttributesForElements(in: rect)
         guard let header: UICollectionViewLayoutAttributes = (attributes?.first {
@@ -35,7 +35,7 @@ public class StretchHeaderLayout: UICollectionViewFlowLayout {
     }
     
     
-    public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    internal override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         true
     }
 }

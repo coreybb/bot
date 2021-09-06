@@ -5,10 +5,11 @@
 //  Created by Corey Beebe on 9/5/21.
 //
 
+
 import UIKit
 
 
-extension String {
+public extension String {
     
     
     //----------------------------
@@ -22,9 +23,7 @@ extension String {
         removeHangingWhiteSpace(self)
     }
     
-    
-    
-    
+
     
     //---------------------
     //  MARK: - Public API
