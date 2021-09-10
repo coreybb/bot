@@ -9,7 +9,7 @@ import UIKit
 
 
 /// A base class for creating custom `UIButton` subclasses that replicates the `isHighlighted` functionality of `ButtonType.system` when a custom initializer is required.
-public class CustomButton: UIButton {
+open class CustomButton: UIButton {
 
     
     public override var isHighlighted: Bool {
