@@ -8,14 +8,17 @@
 import Foundation
 
 
-/// A group communication object allowing for simultaneous transmission of data or events using a one-to-many modification of the delegation pattern.  By subclassing an existing protocol, a delegate multicaster class can instantiate and serve as a wrapper for a `DelegateMulticaster` object, thereby converting a traditionally one-to-one communication pattern into a one-to-many communication pattern. Specify which protocol the multicaster should delegate as a generic type parameter upon instantiation.
+/// A group communication object allowing for simultaneous transmission of data or events using a one-to-many modification of the delegation pattern.  By subclassing an existing protocol, a delegate multicast class can instantiate and serve as a wrapper for a `DelegateMulticaster` object, thereby converting a traditionally one-to-one communication pattern into a one-to-many communication pattern. Specify which protocol the multicaster should delegate as a generic type parameter upon instantiation.
 public class DelegateMulticaster<T> {
 
     
+    //-----------------------------
+    //  MARK: - Private Properties
+    //-----------------------------
     private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
 
     
-    /// Subscribes new delegates to the multicast. Call this function in your delegate multicaster class with a memberwise initializer accepting an array of delegates conforming to the desired protocol, or expose it publicly as a function within the class. In conforming to the desired protocol, delegates subscribed to the `DelegateMulticaster` will receive data and events as they are called by whichever object owns the delegate multicaster wrapper class.
+    /// Subscribes new delegates to the multicast. Call this function in your delegate multicaster class with a memberwise initializer accepting an array of delegates conforming to the desired protocol, or expose it publicly as a function within the class. In conforming to the desired protocol, delegates subscribed to the `DelegateMulticaster` will receive data and events as they are called by whichever object owns the delegate multicast wrapper class.
     func add(_ delegate: T) {
         
         delegates.add(delegate as AnyObject)

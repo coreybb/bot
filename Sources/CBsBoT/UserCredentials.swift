@@ -10,7 +10,7 @@ import Foundation
 
 
 /// A simple objects that encapsulates user credentials, allowing for quick validation of a username and password.
-open struct UserCredentials {
+public struct UserCredentials {
     
     
     let username: String
