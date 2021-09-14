@@ -37,6 +37,7 @@ open class StretchHeaderController: UIViewController {
         self.stretchView = headerView
         self.contentView = contentView
         super.init(nibName: nil, bundle: nil)
+        view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     

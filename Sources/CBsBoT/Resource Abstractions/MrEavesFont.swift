@@ -31,7 +31,13 @@ public enum MrEavesFont: String, CaseIterable {
     
 
     public func font(size: CGFloat) -> UIFont {
-        UIFont(name: prefix + rawValue, size: size)!
+        
+        guard let font: UIFont = UIFont(name: prefix + rawValue, size: size) else {
+            let message: String = "Any application intending to make use of this resource must call `registerFonts()` in the `AppDelegate` at `didFinishLaunchingWithOptions`."
+            fatalError(message)
+        }
+        
+        return font
     }
     
     public var name: String { prefix + rawValue }
