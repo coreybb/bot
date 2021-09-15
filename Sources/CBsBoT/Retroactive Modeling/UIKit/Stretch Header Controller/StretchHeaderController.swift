@@ -17,6 +17,7 @@ open class StretchHeaderController: UIViewController {
     //-----------------------------
     private let stretchView: UIView
     private let contentView: UIView
+    private let headerViewHeight: CGFloat
     private let headerID: String = "h"
     private let contentCellID: String = "i"
     private lazy var collectionView: UICollectionView = {
@@ -33,9 +34,10 @@ open class StretchHeaderController: UIViewController {
     //---------------
     //  MARK: - Init
     //---------------
-    public init(headerView: UIView, contentView: UIView) {
+    public init(headerView: UIView, contentView: UIView, headerViewHeight: CGFloat = 700) {
         self.stretchView = headerView
         self.contentView = contentView
+        self.headerViewHeight = headerViewHeight
         super.init(nibName: nil, bundle: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -129,7 +131,6 @@ extension StretchHeaderController: UICollectionViewDataSource, UICollectionViewD
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //  TODO: - Expose API to allow developer to customize
-        CGSize(width: view.bounds.width, height: 700)
+        CGSize(width: view.bounds.width, height: headerViewHeight)
     }
 }
