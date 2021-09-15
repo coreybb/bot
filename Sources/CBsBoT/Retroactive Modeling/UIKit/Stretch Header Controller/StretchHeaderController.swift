@@ -116,7 +116,7 @@ extension StretchHeaderController: UICollectionViewDataSource, UICollectionViewD
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        //  TODO: - Make dynamic.
+        //  TODO: - Allow for dynamic sizing, to supplement developer customization.
         var headerHeight: CGFloat {
             211
 //            switch currentDevice {
@@ -125,12 +125,13 @@ extension StretchHeaderController: UICollectionViewDataSource, UICollectionViewD
 //            }
         }
         
-        return CGSize(width: collectionView.bounds.width, height: headerHeight)
+        return CGSize(width: collectionView.bounds.width, height: headerViewHeight)
     }
     
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        CGSize(width: view.bounds.width, height: headerViewHeight)
+        //  TODO: - What the fuck is this?
+        CGSize(width: view.bounds.width, height: 700)
     }
 }
