@@ -10,8 +10,8 @@ import UIKit
 
 public struct GradientPair {
     
-    let color1: UIColor
-    let color2: UIColor
+    public let color1: UIColor
+    public let color2: UIColor
     
     
     public init(color1: UIColor, color2: UIColor) {
