@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class SquircleView: UIView {
+open class SquircleView: UIView {
 
     
     
