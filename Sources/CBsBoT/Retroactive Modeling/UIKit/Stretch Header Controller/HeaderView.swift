@@ -37,7 +37,7 @@ internal class HeaderView: UICollectionReusableView {
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
 
         addSubview(childView!)
