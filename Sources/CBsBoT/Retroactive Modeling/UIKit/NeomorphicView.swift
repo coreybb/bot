@@ -9,7 +9,7 @@ import UIKit
 
 
 /// A neomorphic view. Set `circular` to `true` at initialization if a perfectly circular view is required. If a `cornerRadius` is provided at initialization for a `circular` view, `cornerRadius` will be ignored. Any subviews provided at initialization will fill the superview with clipped bounds, with no additional configuration.
-public class NeomorphicView: UIView {
+open class NeomorphicView: UIView {
     
     
     
@@ -50,7 +50,7 @@ public class NeomorphicView: UIView {
         self.hidesVerticalShadow = hidesVerticalShadow
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
