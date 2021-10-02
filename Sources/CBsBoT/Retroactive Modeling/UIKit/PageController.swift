@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class PageController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+open class PageController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     
     //-----------------------------
@@ -28,7 +28,7 @@ public class PageController: UIPageViewController, UIPageViewControllerDelegate,
         
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError()
     }
     
