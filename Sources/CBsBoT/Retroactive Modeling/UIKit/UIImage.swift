@@ -10,6 +10,45 @@ import UIKit
 
 public extension UIImage {
     
+    enum Direction { case horizontal, vertical }
+
+    func withLinearGradientTint(colors: [CGColor], direction: Direction = .horizontal) -> UIImage {
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        
+        guard let context = UIGraphicsGetCurrentContext() else {
+            print("Unable to render an image with a gradient tint.")
+            return self
+        }
+        
+        context.translateBy(x: 0, y: size.height)
+        context.scaleBy(x: 1, y: -1)
+        context.setBlendMode(.normal)
+        
+        let rect: CGRect = CGRect.init(x: 0, y: 0,
+                                       width: size.width, height: size.height)
+
+        // Create gradient
+        let colors = colors as CFArray
+        let space = CGColorSpaceCreateDeviceRGB()
+        let gradient = CGGradient(colorsSpace: space, colors: colors, locations: nil)
+
+        // Apply gradient
+        context.clip(to: rect, mask: cgImage!)
+        let endPointX = (direction == .horizontal) ? size.width : 0
+        let endPointY = (direction == .horizontal) ? 0 : size.height
+        
+        context.drawLinearGradient(gradient!,
+                                   start: CGPoint(x: 0, y: 0),
+                                   end: CGPoint(x: endPointX, y: endPointY),
+                                   options: .drawsAfterEndLocation)
+
+        
+        let gradientImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return gradientImage
+    }
+    
     
     var compressedData: Data? {
     
