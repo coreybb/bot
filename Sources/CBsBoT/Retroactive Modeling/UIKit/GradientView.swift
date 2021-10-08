@@ -53,13 +53,13 @@ open class GradientView: View {
     private func setupGradient() {
 
         let gradientLayer: CAGradientLayer = CAGradientLayer()
-        let endPointX = (direction == .horizontal) ? frame.size.width : 0
-        let endPointY = (direction == .horizontal) ? 0 : frame.size.height
-        
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: endPointX, y: endPointY)
         gradientLayer.colors = colors
         layer.addSublayer(gradientLayer)
         gradientLayer.frame = bounds
+        
+        let endPointX = (direction == .horizontal) ? frame.size.width : 0
+        let endPointY = (direction == .horizontal) ? 0 : frame.size.height
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: endPointX, y: endPointY)
     }
 }
