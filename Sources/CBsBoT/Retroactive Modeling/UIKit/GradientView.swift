@@ -16,14 +16,14 @@ open class GradientView: View {
     //  MARK: - Private Properties
     //-----------------------------
     private let colors: [CGColor]
-    private let direction: Direction
+    private let direction: GradientDirection
     
     
     
     //---------------
     //  MARK: - Init
     //---------------
-    public init(colors: [UIColor], direction: Direction = .horizontal) {
+    public init(colors: [UIColor], direction: GradientDirection = .leftToRight) {
         self.colors = colors.map { $0.cgColor }
         self.direction = direction
         super.init(frame: .zero)
@@ -53,13 +53,10 @@ open class GradientView: View {
     private func setupGradient() {
 
         let gradientLayer: CAGradientLayer = CAGradientLayer()
-        gradientLayer.colors = colors
         layer.addSublayer(gradientLayer)
+        gradientLayer.colors = colors
         gradientLayer.frame = bounds
-        
-        let endPointX = (direction == .horizontal) ? frame.size.width : 0
-        let endPointY = (direction == .horizontal) ? 0 : frame.size.height
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: endPointX, y: endPointY)
+        gradientLayer.startPoint = direction.startPoint
+        gradientLayer.endPoint = direction.endPoint
     }
 }
