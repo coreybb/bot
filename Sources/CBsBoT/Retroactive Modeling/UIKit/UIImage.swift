@@ -10,7 +10,6 @@ import UIKit
 
 public extension UIImage {
     
-    enum Direction { case horizontal, vertical }
 
     func withLinearGradientTint(colors: [CGColor], direction: Direction = .horizontal) -> UIImage {
         
