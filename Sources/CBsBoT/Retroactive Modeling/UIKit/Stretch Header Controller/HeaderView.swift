@@ -15,12 +15,7 @@ internal class HeaderView: UICollectionReusableView {
     //----------------------------
     //  MARK: - Public Properties
     //----------------------------
-    var childView: UIView? {
-        didSet {
-            addSubview(childView!)
-            childView?.fillSuperview()
-        }
-    }
+    var childView: UIView?
 
     
     
@@ -35,5 +30,17 @@ internal class HeaderView: UICollectionReusableView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+
+    //-------------------------------
+    //  MARK: - Superclass Overrides
+    //-------------------------------
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+
+        addSubview(childView!)
+        childView?.fillSuperview()
     }
 }
