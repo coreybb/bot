@@ -16,8 +16,10 @@ internal class HeaderView: UICollectionReusableView {
     //  MARK: - Public Properties
     //----------------------------
     var childView: UIView? {
-        addSubview(childView!)
-        childView?.fillSuperview()
+        didSet {
+            addSubview(childView!)
+            childView?.fillSuperview()
+        }
     }
 
     
