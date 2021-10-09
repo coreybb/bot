@@ -29,7 +29,7 @@ internal class StretchHeaderCollectionCell: UICollectionViewCell {
     //  MARK: - Private Properties
     //-----------------------------
     private var didLayoutChildView = false
-    private let containerView View = View()
+    private let containerView: View = View()
     
     
     
