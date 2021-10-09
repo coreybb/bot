@@ -17,8 +17,8 @@ internal class StretchHeaderCollectionCell: UICollectionViewCell {
     public var childView: UIView! {
         didSet {
             //  TODO: - Ensure this is called only once.
-            containerView.addSubview(childView)
-            childView.fillSuperview()
+//            containerView.addSubview(childView)
+//            childView.fillSuperview()
         }
     }
     
