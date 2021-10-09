@@ -11,18 +11,14 @@ import UIKit
 internal class StretchHeaderCollectionCell: UICollectionViewCell {
     
     
-    private var didLayoutSubviews = false
-    
-    
     //----------------------------
     //  MARK: - Public Properties
     //----------------------------
     public var childView: UIView! {
         didSet {
-            if didLayoutSubviews { return }
+            //  TODO: - Ensure this is called only once.
             containerView.addSubview(childView)
             childView.fillSuperview()
-            didLayoutSubviews = true
         }
     }
     
@@ -45,9 +41,7 @@ internal class StretchHeaderCollectionCell: UICollectionViewCell {
     internal override func layoutSubviews() {
         super.layoutSubviews()
         
-        if didLayoutSubviews { return }
         addSubview(containerView)
         containerView.fillSuperview()
-        didLayoutSubviews = true
     }
 }
