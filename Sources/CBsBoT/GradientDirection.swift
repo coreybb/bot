@@ -36,10 +36,8 @@ public enum GradientDirection {
     private var startPointX: Int {
         
         switch self {
-        case .leftToRight: return 0
         case .topToBottom: return 1
-        case .topLeftToBottomRight: return 0
-        case .topRightToBottomLeft: return 0
+        default: return 0
         }
     }
     
