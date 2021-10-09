@@ -17,8 +17,8 @@ internal class StretchHeaderCollectionCell: UICollectionViewCell {
     public var childView: UIView! {
         didSet {
             //  TODO: - Ensure this is called only once.
-//            containerView.addSubview(childView)
-//            childView.fillSuperview()
+            containerView.addSubview(childView)
+            childView.fillSuperview()
         }
     }
     
@@ -34,14 +34,14 @@ internal class StretchHeaderCollectionCell: UICollectionViewCell {
     }()
     
     
-    
-    //-------------------------------
-    //  MARK: - Superclass Overrides
-    //-------------------------------
-    internal override func layoutSubviews() {
-        super.layoutSubviews()
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
         
         addSubview(containerView)
         containerView.fillSuperview()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
     }
 }
