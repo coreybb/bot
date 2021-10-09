@@ -26,6 +26,8 @@ internal class HeaderView: UICollectionReusableView {
         super.init(frame: .zero)
         
         backgroundColor = .clear
+        addSubview(childView!)
+        childView?.fillSuperview()
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +42,6 @@ internal class HeaderView: UICollectionReusableView {
     open override func layoutSubviews() {
         super.layoutSubviews()
 
-        addSubview(childView!)
-        childView?.fillSuperview()
+
     }
 }

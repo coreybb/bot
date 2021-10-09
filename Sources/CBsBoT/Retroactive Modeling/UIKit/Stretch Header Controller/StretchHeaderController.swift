@@ -48,18 +48,7 @@ open class StretchHeaderController: UIViewController {
     required public init?(coder: NSCoder) {
         fatalError()
     }
-    
-    
-    
-    //-------------------------------
-    //  MARK: - Superclass Overrides
-    //-------------------------------
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        
 
-    }
-    
     
     
     //----------------------
