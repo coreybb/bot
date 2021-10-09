@@ -16,9 +16,10 @@ internal class StretchHeaderCollectionCell: UICollectionViewCell {
     //----------------------------
     public var childView: UIView! {
         didSet {
-            //  TODO: - Ensure this is called only once.
+            if didLayoutChildView { return }
             containerView.addSubview(childView)
             childView.fillSuperview()
+            didLayoutChildView = true
         }
     }
     
@@ -27,13 +28,14 @@ internal class StretchHeaderCollectionCell: UICollectionViewCell {
     //-----------------------------
     //  MARK: - Private Properties
     //-----------------------------
-    private let containerView: UIView = {
-        let view: UIView = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private var didLayoutChildView = false
+    private let containerView View = View()
     
     
+    
+    //---------------
+    //  MARK: - Init
+    //---------------
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
