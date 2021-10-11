@@ -22,7 +22,7 @@ public class GradientLayer: CAGradientLayer {
     //---------------
     //  MARK: - Init
     //---------------
-    init(colors: [UIColor], direction: GradientDirection = .leftToRight) {
+    public init(colors: [UIColor], direction: GradientDirection = .leftToRight) {
         self.direction = direction
         super.init()
         self.colors = colors.map { $0.cgColor }
