@@ -15,15 +15,15 @@ public class NeomorphicButton: UIButton {
     //----------------------------
     //  MARK: - Public Properties
     //----------------------------
-    var color: UIColor = .cardWhite
-    var fontSize: CGFloat = 13
+    public var color: UIColor = .cardWhite
+    public var fontSize: CGFloat = 13
     
     
     
     //-----------------------------
     //  MARK: - Private Properties
     //-----------------------------
-    var didLayoutSubviews: Bool = false
+    private var didLayoutSubviews: Bool = false
 
     
     
@@ -40,6 +40,10 @@ public class NeomorphicButton: UIButton {
     }
     
     
+    
+    //----------------------
+    //  MARK: - Private API
+    //----------------------
     private func setupLayer() {
         
         backgroundColor = color
