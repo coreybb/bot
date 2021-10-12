@@ -21,7 +21,7 @@ public enum Month: String, CaseIterable {
     case december = "December"
     
     
-    var component: String {
+    public var component: String {
         
         switch self {
         case .january: return "01"
