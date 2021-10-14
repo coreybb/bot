@@ -13,7 +13,7 @@ public extension UIImage {
 
     enum Direction { case horizontal, vertical }
     
-    func withLinearGradientTint(colors: [CGColor], direction: Direction = .horizontal) -> UIImage {
+    func withLinearGradientTint(colors: [UIColor], direction: Direction = .horizontal) -> UIImage {
         
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         
@@ -30,7 +30,7 @@ public extension UIImage {
                                        width: size.width, height: size.height)
 
         // Create gradient
-        let colors = colors as CFArray
+        let colors = colors.map { $0.cgColor} as CFArray
         let space = CGColorSpaceCreateDeviceRGB()
         let gradient = CGGradient(colorsSpace: space, colors: colors, locations: nil)
 
