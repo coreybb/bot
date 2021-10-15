@@ -39,7 +39,7 @@ open class GradientView: View {
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         setupGradient()
