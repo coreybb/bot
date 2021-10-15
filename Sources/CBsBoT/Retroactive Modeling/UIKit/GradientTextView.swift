@@ -8,7 +8,7 @@
 import UIKit
 
 
-class GradientTextView: GradientView {
+public class GradientTextView: GradientView {
     
     
     //----------------------
@@ -24,7 +24,7 @@ class GradientTextView: GradientView {
     //---------------
     //  MARK: - Init
     //---------------
-    init(text: String, colors: [UIColor], font: UIFont, gradientDirection: GradientDirection = .leftToRight, textAlignment: NSTextAlignment = .center) {
+    public init(text: String, colors: [UIColor], font: UIFont, gradientDirection: GradientDirection = .leftToRight, textAlignment: NSTextAlignment = .center) {
         self.text = text
         self.font = font
         self.alignment = textAlignment
@@ -40,7 +40,7 @@ class GradientTextView: GradientView {
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
 
         if didLayoutSubviews { return }
