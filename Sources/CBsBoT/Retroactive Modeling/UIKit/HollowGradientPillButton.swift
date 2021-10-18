@@ -15,16 +15,17 @@ open class HollowGradientPillButton: CustomButton {
     //----------------------
     //  MARK: - Private API
     //----------------------
-    private let gradientPair: GradientPair
+    private let colors: [CGColor]
     
     
     
     //---------------
     //  MARK: - Init
     //---------------
-    public init(gradientPair: GradientPair = GradientPair(color1: #colorLiteral(red: 0.9874046445, green: 0.1490907967, blue: 0.4583566785, alpha: 1), color2: #colorLiteral(red: 0.9902660251, green: 0.4092545509, blue: 0.3132936656, alpha: 1))) {
-        self.gradientPair = gradientPair
+    public init(colors: [UIColor] = [#colorLiteral(red: 0.9874046445, green: 0.1490907967, blue: 0.4583566785, alpha: 1), #colorLiteral(red: 0.9902660251, green: 0.4092545509, blue: 0.3132936656, alpha: 1)]) {
+        self.colors = colors.map { $0.cgColor }
         super.init()
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required public init?(coder: NSCoder) {
@@ -40,11 +41,8 @@ open class HollowGradientPillButton: CustomButton {
         setTitleColor(.darkGray, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         
-        let leftColor: UIColor = gradientPair.color1
-        let rightColor: UIColor = gradientPair.color2
         let gradientLayer: CAGradientLayer = CAGradientLayer()
-        
-        gradientLayer.colors = [leftColor.cgColor, rightColor.cgColor]
+        gradientLayer.colors = colors
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         
