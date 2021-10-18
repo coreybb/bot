@@ -23,7 +23,7 @@ open class HollowGradientPillButton: CustomButton {
     //---------------
     public init(colors: [UIColor] = [#colorLiteral(red: 0.9874046445, green: 0.1490907967, blue: 0.4583566785, alpha: 1), #colorLiteral(red: 0.9902660251, green: 0.4092545509, blue: 0.3132936656, alpha: 1)]) {
         self.colors = colors.map { $0.cgColor }
-        super.init(frame: .zero)
+        super.init()
         translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -33,7 +33,9 @@ open class HollowGradientPillButton: CustomButton {
     
     
     
-    
+    //-------------------------------
+    //  MARK: - Superclass Overrides
+    //-------------------------------
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         
