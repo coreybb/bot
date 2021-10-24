@@ -23,6 +23,7 @@ public extension URLRequest {
         session.dataTask(with: self) {
             (data, response, error) in
             
+            print(response) // TODO: - Delete
             guard let data: Data = data else {
                 let message = "The HTTP response contained no data."
                 complete?(.error(.unknown(message))); return
