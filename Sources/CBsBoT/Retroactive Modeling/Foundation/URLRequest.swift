@@ -36,6 +36,8 @@ public extension URLRequest {
                 complete?(.object(try JSONDecoder().decode(T.self, from: data)))
             
             } catch let codingError as NSError {
+                
+                print("There was a decoding error! This was what was retrieved:\n", String(decoding: data, as: UTF8.self))
                 complete?(.error(.serialization(codingError)))
             }
         }.resume()
