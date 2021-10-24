@@ -12,4 +12,5 @@ public struct CodingError {
     
     let serializationError: NSError
     let dataString: String
+    let type: Codable.Type
 }
