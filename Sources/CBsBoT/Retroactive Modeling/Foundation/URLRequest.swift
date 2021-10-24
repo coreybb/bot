@@ -38,8 +38,7 @@ public extension URLRequest {
             } catch let serializationError as NSError {
                 let dataString: String = String(decoding: data, as: UTF8.self)
                 let codingError: CodingError = CodingError(serializationError: serializationError,
-                                                           dataString: dataString,
-                                                           type: T.self)
+                                                           dataString: dataString)
                 complete?(.error(.serialization(codingError: codingError)))
             }
         }.resume()
