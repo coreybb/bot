@@ -11,6 +11,6 @@ import Foundation
 public enum DecodingResult <T: Codable> {
     
     case object(T)
-    case codingError(NSError)
+    case codingError(CodingError)
 }
 

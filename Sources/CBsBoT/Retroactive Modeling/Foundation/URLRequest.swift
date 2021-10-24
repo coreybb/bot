@@ -35,9 +35,11 @@ public extension URLRequest {
             do {
                 complete?(.object(try JSONDecoder().decode(T.self, from: data)))
             
-            } catch let codingError as NSError {
-                complete?(.error(.serialization(codingError: codingError,
-                                                dataString: String(decoding: data, as: UTF8.self))))
+            } catch let serializationError as NSError {
+                let dataString: String = String(decoding: data, as: UTF8.self)
+                let codingError: CodingError = CodingError(serializationError: serializationError,
+                                                           dataString: dataString)
+                complete?(.error(.serialization(codingError: codingError)))
             }
         }.resume()
     }
