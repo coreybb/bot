@@ -42,7 +42,7 @@ public extension HTTPError {
         case .error(let message): return message.localizedDescription
         case .unknown(let message): return message
         case .serialization(codingError: let codingError):
-            return "\nWe were unable to decode data returned in an HTTP response. The serialization error should specify the mislabelled or missing key:\n\(codingError.serializationError)\nPlease inspect the response data below to ensure that it matches your object model(s):\nOBJECT MODEL:\n\(codingError.type)\nRESPONSE DATA\n\(codingError.dataString)\n"
+            return "\nWe were unable to decode data returned in an HTTP response. The serialization error should specify the mislabelled or missing key:\n\(codingError.serializationError)\nPlease inspect the response data below to ensure that it matches your object model(s):\nOBJECT MODEL:\n\(codingError.type.self)\nRESPONSE DATA\n\(codingError.dataString)\n"
         }
     }
 }
