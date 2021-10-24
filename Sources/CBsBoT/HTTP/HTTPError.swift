@@ -21,5 +21,5 @@ public enum HTTPError {
     case noResponse
     case error(NSError)
     case unknown(String)
-    case serialization(NSError)
+    case serialization(codingError: NSError, dataString: String)
 }
