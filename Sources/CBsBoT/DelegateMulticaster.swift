@@ -9,7 +9,7 @@ import Foundation
 
 
 /// A group communication object allowing for simultaneous transmission of data or events using a one-to-many modification of the delegation pattern.  By subclassing an existing protocol, a delegate multicast class can instantiate and serve as a wrapper for a `DelegateMulticaster` object, thereby converting a traditionally one-to-one communication pattern into a one-to-many communication pattern. Specify which protocol the multicaster should delegate as a generic type parameter upon instantiation.
-public class DelegateMulticaster<T> {
+open class DelegateMulticaster<T> {
 
     
     //-----------------------------
