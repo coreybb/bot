@@ -16,8 +16,19 @@ open class DelegateMulticaster<T> {
     //  MARK: - Private Properties
     //-----------------------------
     private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
+    
+    
+    
+    //---------------
+    //  MARK: - Init
+    //---------------
+    public init() { }
 
     
+    
+    //---------------------
+    //  MARK: - Public API
+    //---------------------
     /// Subscribes new delegates to the multicast. Call this function in your delegate multicaster class with a memberwise initializer accepting an array of delegates conforming to the desired protocol, or expose it publicly as a function within the class. In conforming to the desired protocol, delegates subscribed to the `DelegateMulticaster` will receive data and events as they are called by whichever object owns the delegate multicast wrapper class.
     func add(_ delegate: T) {
         
