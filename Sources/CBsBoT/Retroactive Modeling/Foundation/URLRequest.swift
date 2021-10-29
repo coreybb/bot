@@ -19,17 +19,16 @@ public extension URLRequest {
     //---------------------
     func getResponse <T: Decodable> (complete: NetworkResult<T>?) {
         
-        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
-        session.dataTask(with: self) {
-            (data, response, error) in
+        URLSession(configuration: URLSessionConfiguration.default)
+            .dataTask(with: self) {
+                (data, response, error) in
             
-            if let response = response as? HTTPURLResponse {
-                print(response.statusCode)
-            } else { print("there is no response") }
-            
-            print(response) // TODO: - Delete
+            if response.isNil() {
+                complete?(.error(.noResponse)); return
+            }
+
             guard let data: Data = data else {
-                let message = "The HTTP response contained no data."
+                let message: String = "The server returned an HTTP response, but it contained no data."
                 complete?(.error(.unknown(message))); return
             }
             
@@ -73,5 +72,3 @@ public extension URLRequest {
         }
     }
 }
-
-
