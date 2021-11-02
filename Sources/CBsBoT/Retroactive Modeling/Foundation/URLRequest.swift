@@ -40,7 +40,19 @@ public extension URLRequest {
                 complete?(.object(try JSONDecoder().decode(T.self, from: data)))
             
             } catch let serializationError as NSError {
+                
                 let dataString: String = String(decoding: data, as: UTF8.self)
+                
+                if let data = dataString.data(using: String.Encoding.utf8) {
+                        do {
+                            if let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+                                // Use this dictionary
+                                print("DICTIONARY:", dictionary)
+                            }
+                        } catch let otherErorr as NSError {
+                            print("OTHER ERROR", otherErorr)
+                        }
+                    }
                 let codingError: CodingError = CodingError(serializationError: serializationError,
                                                            dataString: dataString)
                 complete?(.error(.serialization(codingError: codingError)))
