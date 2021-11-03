@@ -23,9 +23,9 @@ public extension URLRequest {
             .dataTask(with: self) {
                 (data, response, error) in
             
-//            if response.isNil() {
-//                complete?(.error(.noResponse)); return
-//            }
+            if response.isNil() {
+                complete?(.error(.noResponse(url))); return
+            }
 
             guard let data: Data = data else {
                 let message: String = "The server returned an HTTP response, but it contained no data."
@@ -69,7 +69,7 @@ public extension URLRequest {
     private func http(_ response: URLResponse?, _ message: String? = nil) -> HTTPError {
         
         guard let response: HTTPURLResponse = response as? HTTPURLResponse else {
-            return .noResponse
+            return .noResponse(url)
         }
         
         switch response.statusCode  {

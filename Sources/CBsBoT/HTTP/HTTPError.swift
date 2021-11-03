@@ -18,7 +18,7 @@ public enum HTTPError {
     case notFound
     case internalServerError
     case unavailable
-    case noResponse
+    case noResponse(URL?)
     case error(NSError)
     case unknown(String)
     case serialization(codingError: CodingError)
