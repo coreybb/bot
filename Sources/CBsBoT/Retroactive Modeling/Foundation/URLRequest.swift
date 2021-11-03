@@ -23,9 +23,9 @@ public extension URLRequest {
             .dataTask(with: self) {
                 (data, response, error) in
             
-            if response.isNil() {
-                complete?(.error(.noResponse)); return
-            }
+//            if response.isNil() {
+//                complete?(.error(.noResponse)); return
+//            }
 
             guard let data: Data = data else {
                 let message: String = "The server returned an HTTP response, but it contained no data."
@@ -46,6 +46,7 @@ public extension URLRequest {
                 if let data = dataString.data(using: String.Encoding.utf8) {
                         do {
                             if let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] {
+
                                 // Use this dictionary
                                 print("DICTIONARY:", dictionary)
                             }
