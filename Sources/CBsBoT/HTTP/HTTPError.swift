@@ -35,7 +35,7 @@ public extension HTTPError {
         case .badRequest(let url): return "You've sent a bad request to \(urlDescription(from: url))."
         case .unauthorized(let url): return "You're not authorized to access service at \(urlDescription(from: url))."
         case .forbidden(let url): return "Access is forbidden at \(urlDescription(from: url))."
-        case .notFound(let url): return "There was no service found at \(urlDescription(from: url))t."
+        case .notFound(let url): return "There was no service found at \(urlDescription(from: url))."
         case .internalServerError(let url): return "There was an internal server error at \(urlDescription(from: url)). Try again later."
         case .unavailable(let url): return "The service at \(urlDescription(from: url)) is currently unavailable."
         case .noResponse(let url):
@@ -49,6 +49,8 @@ public extension HTTPError {
     
     
     private func urlDescription(from url: URL?) -> String {
-        url.isNil() ? "an unknown endpoint" : String(describing: url)
+        
+        guard let url: URL = url else { return "an unknown endpoint" }
+        return String(describing: url)
     }
 }
