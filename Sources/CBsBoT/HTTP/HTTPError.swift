@@ -11,13 +11,13 @@ import Foundation
 public enum HTTPError {
     
     case ok
-    case moved
-    case badRequest
-    case unauthorized
-    case forbidden
-    case notFound
-    case internalServerError
-    case unavailable
+    case moved(URL?)
+    case badRequest(URL?)
+    case unauthorized(URL?)
+    case forbidden(URL?)
+    case notFound(URL?)
+    case internalServerError(URL?)
+    case unavailable(URL?)
     case noResponse(URL?)
     case error(NSError)
     case unknown(String)
@@ -31,20 +31,24 @@ public extension HTTPError {
         
         switch self {
         case .ok: return "The server returned an \"OK\" status."
-        case .moved: return "Service at the specified endpoint has moved."
-        case .badRequest: return "You've sent a bad request to the server."
-        case .unauthorized: return "You're not authorized to access this service."
-        case .forbidden: return "Access is forbidden at this endpoint."
-        case .notFound: return "There was no service found at this endpoint."
-        case .internalServerError: return "There was an internal server error at the specified endpoint. Try again later."
-        case .unavailable: return "The service at this endpoint is currently unavailable."
+        case .moved(let url): return "Service at \(urlDescription(from: url)) has moved."
+        case .badRequest(let url): return "You've sent a bad request to \(urlDescription(from: url))."
+        case .unauthorized(let url): return "You're not authorized to access service at \(urlDescription(from: url))."
+        case .forbidden(let url): return "Access is forbidden at \(urlDescription(from: url))."
+        case .notFound(let url): return "There was no service found at \(urlDescription(from: url))t."
+        case .internalServerError(let url): return "There was an internal server error at \(urlDescription(from: url)). Try again later."
+        case .unavailable(let url): return "The service at \(urlDescription(from: url)) is currently unavailable."
         case .noResponse(let url):
-            let url: String = url.isNil() ? "an unknown endpoint" : String(describing: url)
-            return "There was no response from:\n\(url)"
+            return "There was no response from \(urlDescription(from: url))"
         case .error(let message): return message.localizedDescription
         case .unknown(let message): return message
         case .serialization(codingError: let codingError):
             return "\nWe were unable to decode data returned in an HTTP response. The serialization error should specify the mislabelled or missing key:\n\(codingError.serializationError)\nPlease inspect the response data below to ensure that it matches your object model(s):\n\(codingError.dataString)\n"
         }
+    }
+    
+    
+    private func urlDescription(from url: URL?) -> String {
+        url.isNil() ? "an unknown endpoint" : String(describing: url)
     }
 }

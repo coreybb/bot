@@ -74,13 +74,13 @@ public extension URLRequest {
         
         switch response.statusCode  {
         case 200: return .ok
-        case 301: return .moved
-        case 400: return .badRequest
-        case 401: return .unauthorized
-        case 403: return .forbidden
-        case 404: return .notFound
-        case 500: return .internalServerError
-        case 503: return .unavailable
+        case 301: return .moved(url)
+        case 400: return .badRequest(url)
+        case 401: return .unauthorized(url)
+        case 403: return .forbidden(url)
+        case 404: return .notFound(url)
+        case 500: return .internalServerError(url)
+        case 503: return .unavailable(url)
         default: return .unknown(message ?? "We received unknown status code \(String(describing: response.statusCode)) in the HTTP URL response.")
         }
     }
