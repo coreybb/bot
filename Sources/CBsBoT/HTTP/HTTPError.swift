@@ -38,7 +38,9 @@ public extension HTTPError {
         case .notFound: return "There was no service found at this endpoint."
         case .internalServerError: return "There was an internal server error at the specified endpoint. Try again later."
         case .unavailable: return "The service at this endpoint is currently unavailable."
-        case .noResponse: return "There was no response from the specified endpoint."
+        case .noResponse(let url):
+            let url: String = url.isNil() ? "an unknown endpoint" : String(describing: url)
+            return "There was no response from:\n\(url)"
         case .error(let message): return message.localizedDescription
         case .unknown(let message): return message
         case .serialization(codingError: let codingError):
