@@ -1,5 +1,5 @@
 //
-//  CircularButton.swift
+//  RoundedButton.swift
 //  Lifesaver
 //
 //  Created by Corey Beebe on 11/8/21.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CircularButton: CustomButton {
+public class RoundedButton: CustomButton {
     
     
     //-----------------------------
@@ -75,7 +75,7 @@ class CircularButton: CustomButton {
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    override func draw(_ rect: CGRect) {
+    open override func draw(_ rect: CGRect) {
         super.draw(rect)
         setupLayers()
     }
