@@ -28,7 +28,13 @@ public extension URLRequest {
             }
 
             guard let data: Data = data else {
-                let message: String = "The server returned an HTTP response, but it contained no data."
+                
+                var urlString: String {
+                    guard let url: URL = url else { return "an unknown endpoint"}
+                    return String(describing: url)
+                }
+                
+                let message: String = "The server at \(urlString) returned an HTTP response, but it contained no data."
                 complete?(.error(.unknown(message))); return
             }
             
@@ -52,7 +58,7 @@ public extension URLRequest {
     }
     
 
-    
+
     //----------------------
     //  MARK: - Private API
     //----------------------

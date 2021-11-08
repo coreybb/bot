@@ -22,7 +22,7 @@ public class NeomorphicPillButton: UIButton {
     //-----------------------------
     //  MARK: - Private Properties
     //-----------------------------
-    var didLayoutSubviews: Bool = false
+    private var didLayoutSubviews: Bool = false
     
 
     
