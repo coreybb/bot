@@ -15,7 +15,7 @@ open class HeaderView: UICollectionReusableView {
     //----------------------------
     //  MARK: - Public Properties
     //----------------------------
-    var childView: UIView?
+    public var childView: UIView?
     
     
     
