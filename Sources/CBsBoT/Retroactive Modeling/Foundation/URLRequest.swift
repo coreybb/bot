@@ -44,7 +44,6 @@ public extension URLRequest {
             
             do {
                 let dataString: String = String(decoding: data, as: UTF8.self)
-                print(dataString)
                 complete?(.object(try JSONDecoder().decode(T.self, from: data)))
             
             } catch let serializationError as NSError {
