@@ -64,7 +64,7 @@ open class StretchHeaderController: UIViewController {
     private func setupCollectionView() {
         
         collectionView.register(StretchHeaderCollectionCell.self, forCellWithReuseIdentifier: contentCellID)
-        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
+        collectionView.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
         collectionView.backgroundColor = .white
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsVerticalScrollIndicator = false
@@ -96,9 +96,9 @@ extension StretchHeaderController: UICollectionViewDataSource, UICollectionViewD
     
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let reusableHeader: HeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+        let reusableHeader: CollectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                          withReuseIdentifier: headerID,
-                                                                                         for: indexPath) as! HeaderView
+                                                                                         for: indexPath) as! CollectionHeader
         reusableHeader.childView = stretchView
         return reusableHeader
     }

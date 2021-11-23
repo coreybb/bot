@@ -9,7 +9,7 @@ import UIKit
 
 
 ///  A simple subclass of `UICollectionReusableView` that exposes a `childView` property and lays it out to fill the containing `HeaderView`.
-open class HeaderView: UICollectionReusableView {
+open class CollectionHeader: UICollectionReusableView {
     
     
     //----------------------------
