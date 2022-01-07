@@ -40,24 +40,15 @@ open class StretchHeaderController: UIViewController {
         self.headerViewHeight = headerViewHeight
         super.init(nibName: nil, bundle: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
-//        layoutCollectionView()
-//        setupCollectionView()
+        layoutCollectionView()
+        setupCollectionView()
     }
     
     
     required public init?(coder: NSCoder) {
         fatalError()
     }
-    
-    
-    
 
-    open override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        layoutCollectionView()
-        setupCollectionView()
-    }
     
     
     //----------------------
