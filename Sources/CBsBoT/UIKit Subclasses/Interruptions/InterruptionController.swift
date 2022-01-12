@@ -8,7 +8,7 @@
 import UIKit
 
 
-class InterruptionController: UIViewController  {
+open class InterruptionController: UIViewController  {
 
     
     
@@ -25,13 +25,13 @@ class InterruptionController: UIViewController  {
     //-------------
     //  MARK: Init
     //-------------
-    init(interruption: Interruption) {
+    public init(interruption: Interruption) {
         self.interruption = interruption
         super.init(nibName: nil, bundle: nil)
         setupUI()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
