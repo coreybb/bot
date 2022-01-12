@@ -12,6 +12,14 @@ import UIKit
 open class CustomButton: UIButton {
 
     
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override var isHighlighted: Bool {
         
         get { return super.isHighlighted }
