@@ -22,6 +22,7 @@ class InterruptionCard: SquircleView {
     //-----------------------------
     //  MARK: - Private Properties
     //-----------------------------
+    private var isFirstLoad: Bool = true
     private weak var delegate: InterruptionCardDelegate?
     
     private lazy var dismissButton: UIButton = {
@@ -53,16 +54,11 @@ class InterruptionCard: SquircleView {
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
         setup()
     }
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//        
-//    }
     
     
     
@@ -98,7 +94,10 @@ class InterruptionCard: SquircleView {
     
     
     private func setup() {
-
+        
+        guard isFirstLoad else { return }
+        isFirstLoad.toggle()
+        
         setupUI()
         addGesture()
         setupCardViewAnimation()
