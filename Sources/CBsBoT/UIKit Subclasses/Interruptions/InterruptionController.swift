@@ -59,6 +59,7 @@ open class InterruptionController: UIViewController  {
       
     private func setupUI() {
         
+        modalPresentationStyle = .overCurrentContext
         view.addSubview(interruptionView)
         interruptionView.fillSuperview()
     }

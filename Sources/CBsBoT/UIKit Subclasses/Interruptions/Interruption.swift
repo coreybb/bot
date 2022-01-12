@@ -28,6 +28,5 @@ public struct Interruption {
         self.secondaryCallToAction = secondaryCallToAction
         self.action = action
         self.secondaryAction = secondaryAction
-//        NotificationCenter.default.post(name: .showInterruption, object: self)
     }
 }
