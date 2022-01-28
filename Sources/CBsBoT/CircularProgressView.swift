@@ -30,7 +30,7 @@ private extension Comparable {
 }
 
 @IBDesignable
-public class CircularProgressView: UIView, CAAnimationDelegate {
+open class CircularProgressView: UIView, CAAnimationDelegate {
     private enum Conversion {
         static func degreesToRadians (value:CGFloat) -> CGFloat {
             return value * .pi / 180.0
@@ -84,14 +84,14 @@ public class CircularProgressView: UIView, CAAnimationDelegate {
         }
     }
     
-    public var progress: Double = 0 {
+    open var progress: Double = 0 {
         didSet {
             let clampedProgress = progress.clamped(toMinimum: 0, maximum: 1)
             angle = 360 * clampedProgress
         }
     }
     
-    @IBInspectable public var angle: Double = 0 {
+    @IBInspectable open var angle: Double = 0 {
         didSet {
             if self.isAnimating() {
                 self.pauseAnimation()
@@ -100,7 +100,7 @@ public class CircularProgressView: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var startAngle: Double = 0 {
+    @IBInspectable open var startAngle: Double = 0 {
         didSet {
             startAngle = Utility.mod(value: startAngle, range: 360, minMax: (0, 360))
             progressLayer.startAngle = startAngle
@@ -115,65 +115,65 @@ public class CircularProgressView: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var roundedCorners: Bool = true {
+    @IBInspectable open var roundedCorners: Bool = true {
         didSet {
             progressLayer.roundedCorners = roundedCorners
         }
     }
     
-    @IBInspectable public var lerpColorMode: Bool = false {
+    @IBInspectable open var lerpColorMode: Bool = false {
         didSet {
             progressLayer.lerpColorMode = lerpColorMode
         }
     }
     
-    @IBInspectable public var gradientRotateSpeed: CGFloat = 0 {
+    @IBInspectable open var gradientRotateSpeed: CGFloat = 0 {
         didSet {
             progressLayer.gradientRotateSpeed = gradientRotateSpeed
         }
     }
     
-    @IBInspectable public var glowAmount: CGFloat = 1.0 {//Between 0 and 1
+    @IBInspectable open var glowAmount: CGFloat = 1.0 {//Between 0 and 1
         didSet {
             glowAmount = glowAmount.clamped(toMinimum: 0, maximum: 1)
             progressLayer.glowAmount = glowAmount
         }
     }
     
-    public var glowMode: CircularProgressGlowMode = .forward {
+    open var glowMode: CircularProgressGlowMode = .forward {
         didSet {
             progressLayer.glowMode = glowMode
         }
     }
     
-    @IBInspectable public var progressThickness: CGFloat = 0.4 {//Between 0 and 1
+    @IBInspectable open var progressThickness: CGFloat = 0.4 {//Between 0 and 1
         didSet {
             progressThickness = progressThickness.clamped(toMinimum: 0, maximum: 1)
             progressLayer.progressThickness = progressThickness / 2
         }
     }
     
-    @IBInspectable public var trackThickness: CGFloat = 0.5 {//Between 0 and 1
+    @IBInspectable open var trackThickness: CGFloat = 0.5 {//Between 0 and 1
         didSet {
             trackThickness = trackThickness.clamped(toMinimum: 0, maximum: 1)
             progressLayer.trackThickness = trackThickness / 2
         }
     }
     
-    @IBInspectable public var trackColor: UIColor = .black {
+    @IBInspectable open var trackColor: UIColor = .black {
         didSet {
             progressLayer.trackColor = trackColor
             progressLayer.setNeedsDisplay()
         }
     }
     
-    @IBInspectable public var progressInsideFillColor: UIColor? = nil {
+    @IBInspectable open var progressInsideFillColor: UIColor? = nil {
         didSet {
             progressLayer.progressInsideFillColor = progressInsideFillColor ?? .clear
         }
     }
     
-    public var progressColors: [UIColor] {
+    open var progressColors: [UIColor] {
         get {
             return progressLayer.colorsArray
         }
@@ -214,7 +214,7 @@ public class CircularProgressView: UIView, CAAnimationDelegate {
         checkAndSetIBColors()
     }
     
-    override public class var layerClass: AnyClass {
+    override open class var layerClass: AnyClass {
         return CircularProgressViewLayer.self
     }
     
