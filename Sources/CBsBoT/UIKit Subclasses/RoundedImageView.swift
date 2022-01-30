@@ -18,6 +18,7 @@ open class RoundedImageView: View {
     private let cornerRadius: CGFloat
     private let image: UIImage
     private let castsShadow: Bool
+    private let borderColor: UIColor?
     private var didLayoutSubviews: Bool = false
     
     
@@ -25,11 +26,12 @@ open class RoundedImageView: View {
     //---------------
     //  MARK: - Init
     //---------------
-    public init(image: UIImage, cornerRadius: CGFloat = 11, circular: Bool = false, castsShadow: Bool = true) {
+    public init(image: UIImage, cornerRadius: CGFloat = 11, circular: Bool = false, castsShadow: Bool = true, borderColor: UIColor? = nil) {
         self.image = image
         self.circular = circular
         self.cornerRadius = cornerRadius
         self.castsShadow = castsShadow
+        self.borderColor = borderColor
         super.init(frame: .zero)
     }
     
@@ -87,6 +89,12 @@ open class RoundedImageView: View {
         let imageView: UIImageView = UIImageView(image: image)
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = circular ? (frame.height / 2) : cornerRadius
+        
+        if let borderColor = borderColor {
+            imageView.layer.borderColor = borderColor.cgColor
+            imageView.layer.borderWidth = imageView.frame.width * 0.1
+        }
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
         imageView.fillSuperview()
