@@ -92,7 +92,7 @@ open class RoundedImageView: View {
         
         if let borderColor = borderColor {
             imageView.layer.borderColor = borderColor.cgColor
-            imageView.layer.borderWidth = imageView.frame.width * 0.003
+            imageView.layer.borderWidth = imageView.frame.width * 0.002
         }
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
