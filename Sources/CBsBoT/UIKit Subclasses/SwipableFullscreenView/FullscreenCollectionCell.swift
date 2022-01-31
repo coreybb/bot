@@ -53,5 +53,6 @@ class FullscreenCollectionCell: UICollectionViewCell {
         hostedView.frame = contentView.bounds
         hostedView.clipsToBounds = false
         contentView.addSubview(hostedView)
+        print(hostedView.frame)
     }
 }
