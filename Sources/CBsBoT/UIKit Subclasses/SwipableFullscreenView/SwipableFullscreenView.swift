@@ -9,7 +9,7 @@ import UIKit
 
 
 /// A UIView that allows users to easily swipe between  `childViews`. A `SwipableFullscreenView` allows a parent controller to retain its child controllers, and therefore observe and modify their state from a centralized class.
-open class SwipableFullscreenView: UIView {
+open class SwipableFullscreenView: View {
     
     
     //-----------------------------
