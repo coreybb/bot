@@ -19,7 +19,8 @@ open class SwipableFullscreenView: View {
     private let childViews: [UIView]
     private let cellID: String = "i"
     private lazy var collectionView: FullscreenCollectionView = FullscreenCollectionView(view: self, cellViews: childViews)
-    private lazy var dataSourceAndDelegate: FullscreenCollectionDataSourceAndDelegate = FullscreenCollectionDataSourceAndDelegate(cellID: cellID, cellViews: childViews)
+    private lazy var dataSourceAndDelegate: FullscreenCollectionDataSourceAndDelegate = FullscreenCollectionDataSourceAndDelegate(cellID: cellID,
+                                                                                                                                  cellViews: childViews)
     
     
     
@@ -56,27 +57,25 @@ open class SwipableFullscreenView: View {
     private func setupUI() {
         
         backgroundColor = .cardWhite
-        layoutUI()
-        setupCollectionView()
-    }
-    
-    
-    private func layoutUI() {
-        
         layoutCollectionView()
+        setupCollectionView()
     }
     
     
     private func layoutCollectionView() {
         
         addSubview(collectionView)
-        collectionView.fillSuperview()
+        collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     
     private func setupCollectionView() {
         
         collectionView.register(FullscreenCollectionCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.backgroundColor = collectionColor
         collectionView.delegate = dataSourceAndDelegate
         collectionView.dataSource = dataSourceAndDelegate
     }

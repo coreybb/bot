@@ -12,11 +12,11 @@ class FullscreenCollectionView: UICollectionView {
     
     
     init(view: UIView, cellViews: [UIView]) {
-        super.init(frame: .zero, collectionViewLayout: FullscreenCollectionLayout(view: view))
-        
+        //  Feed the bounds of the view directly into the collection view at init
+        super.init(frame: view.bounds, collectionViewLayout: FullscreenCollectionLayout(view: view))
         translatesAutoresizingMaskIntoConstraints = false
         decelerationRate = UIScrollView.DecelerationRate.fast
-        isScrollEnabled = false
+//        isScrollEnabled = false
         backgroundColor = .clear
     }
 
