@@ -10,14 +10,14 @@ import UIKit
 
 //  TODO: - Make extensible so that the developer can choose corner radius, shadow, etc.
 //  TODO: - Implement as a Squircle by having the shadowed background view set to the bounds of the Squircle in the fore.
-class RoundedShadowCollectionCell: UICollectionViewCell {
+open class RoundedShadowCollectionCell: UICollectionViewCell {
     
     
 
     //----------------------------
     //  MARK: - Public Properties
     //----------------------------
-    lazy var mainBackgroundView: UIView = {
+    public lazy var mainBackgroundView: UIView = {
         
         let view: UIView = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,14 +56,14 @@ class RoundedShadowCollectionCell: UICollectionViewCell {
     //---------------
     //  MARK: - Init
     //---------------
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupUI()
     }
 
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -72,7 +72,7 @@ class RoundedShadowCollectionCell: UICollectionViewCell {
     //-------------------------------
     //  MARK: - Superclass Overrides
     //-------------------------------
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        super.touchesBegan(touches, with: event)
         
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseOut, animations: {
