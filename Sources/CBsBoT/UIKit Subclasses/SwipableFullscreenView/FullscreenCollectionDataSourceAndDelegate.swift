@@ -9,7 +9,7 @@ import UIKit
 
 
 
-class FullscreenCollectionDataSourceAndDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+class FullscreenCollectionDataSourceAndDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     
     //-----------------------------
@@ -49,5 +49,9 @@ class FullscreenCollectionDataSourceAndDelegate: NSObject, UICollectionViewDataS
             .dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! FullscreenCollectionCell
         cell.hostedView = cellViews[indexPath.item]
         return cell
+    }
+    
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 400, height: 500)
     }
 }
