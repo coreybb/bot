@@ -31,7 +31,7 @@ open class SwipableFullscreenView: View {
         self.childViews = childViews
         collectionColor = backgroundColor
         super.init(frame: .zero)
-        setupUI()
+//        setupUI()
     }
 
     required public init?(coder: NSCoder) {
@@ -46,7 +46,7 @@ open class SwipableFullscreenView: View {
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        
+        setupUI()
     }
     
     
