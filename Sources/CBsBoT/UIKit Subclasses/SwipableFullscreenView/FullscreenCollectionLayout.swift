@@ -1,6 +1,6 @@
 //
 //  FullscreenCollectionLayout.swift
-//  
+//
 //
 //  Created by Corey Beebe on 9/10/21.
 //

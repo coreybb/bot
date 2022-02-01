@@ -1,6 +1,6 @@
 //
 //  FullscreenCollectionCell.swift
-//  
+//
 //
 //  Created by Corey Beebe on 9/10/21.
 //
@@ -40,8 +40,8 @@ class FullscreenCollectionCell: UICollectionViewCell {
     //----------------------
     private func setupCell() {
         
-        contentView.clipsToBounds = false // ?
         backgroundColor = .clear
+        contentView.clipsToBounds = false // ?
 //        contentView.layer.cornerRadius = 16 // ?
         contentView.layer.masksToBounds = true
     }
@@ -50,9 +50,11 @@ class FullscreenCollectionCell: UICollectionViewCell {
     private func setupHostedView() {
         
         guard let hostedView = hostedView else { return }
-        hostedView.frame = contentView.bounds
-        hostedView.clipsToBounds = false
-        contentView.addSubview(hostedView)
-        print(hostedView.frame)
+        addSubview(hostedView)
+        hostedView.translatesAutoresizingMaskIntoConstraints = false
+        hostedView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        hostedView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        hostedView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        hostedView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }

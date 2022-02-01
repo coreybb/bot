@@ -1,6 +1,6 @@
 //
 //  SwipableFullscreenView.swift
-//  
+//
 //
 //  Created by Corey Beebe on 9/10/21.
 //
@@ -19,19 +19,17 @@ open class SwipableFullscreenView: View {
     private let childViews: [UIView]
     private let cellID: String = "i"
     private lazy var collectionView: FullscreenCollectionView = FullscreenCollectionView(view: self, cellViews: childViews)
-    private lazy var dataSourceAndDelegate: FullscreenCollectionDataSourceAndDelegate = FullscreenCollectionDataSourceAndDelegate(cellID: cellID,
-                                                                                                                                  cellViews: childViews)
+    private lazy var didLayoutSubviews: Bool = false
     
     
     
     //---------------
     //  MARK: - Init
     //---------------
-    public init(childViews: [UIView], backgroundColor: UIColor = .cardWhite) {
+    public init(childViews: [UIView], backgroundColor: UIColor = .white) {
         self.childViews = childViews
         collectionColor = backgroundColor
         super.init(frame: .zero)
-        setupUI()
     }
 
     required public init?(coder: NSCoder) {
@@ -46,7 +44,9 @@ open class SwipableFullscreenView: View {
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-//        setupUI()
+        if didLayoutSubviews { return }
+        setupUI()
+        didLayoutSubviews = true
     }
     
     
@@ -56,7 +56,7 @@ open class SwipableFullscreenView: View {
     //----------------------
     private func setupUI() {
         
-        backgroundColor = .cardWhite
+        backgroundColor = .clear
         layoutCollectionView()
         setupCollectionView()
     }
@@ -76,7 +76,31 @@ open class SwipableFullscreenView: View {
         
         collectionView.register(FullscreenCollectionCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.backgroundColor = collectionColor
-        collectionView.delegate = dataSourceAndDelegate
-        collectionView.dataSource = dataSourceAndDelegate
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+}
+
+
+
+extension SwipableFullscreenView: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        childViews.count
+    }
+    
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell: FullscreenCollectionCell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! FullscreenCollectionCell
+        cell.hostedView = childViews[indexPath.item]
+        return cell
     }
 }
