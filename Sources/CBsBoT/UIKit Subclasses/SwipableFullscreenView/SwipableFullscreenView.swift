@@ -93,8 +93,9 @@ open class SwipableFullscreenView: View {
     
     private func setupCollectionView() {
         
-        collectionView.allowsSelection = false
-        collectionView.isUserInteractionEnabled = collectionUserInteractionEnabled
+//        collectionView.allowsSelection = false
+//        collectionView.isUserInteractionEnabled = collectionUserInteractionEnabled
+        collectionView.isScrollEnabled = false
         collectionView.register(FullscreenCollectionCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.backgroundColor = collectionColor
         collectionView.delegate = self
