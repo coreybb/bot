@@ -58,14 +58,18 @@ open class SwipableFullscreenView: View {
     //---------------------
     public func scrollToView(at index: Int) {
         
+        
+        
         guard (index <= childViews.count - 1) &&
                 (index >= 0) else {
             print("The SwipableFullScreenView has no child view at index \(index), and is unable to scroll!")
             return
         }
         
+        collectionView.isScrollEnabled = true
         let indexPath: IndexPath = IndexPath(item: index, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        collectionView.isScrollEnabled = false
     }
     
     
