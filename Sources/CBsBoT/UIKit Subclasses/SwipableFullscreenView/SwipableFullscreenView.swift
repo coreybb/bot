@@ -19,6 +19,7 @@ open class SwipableFullscreenView: View {
     private let childViews: [UIView]
     private let cellID: String = "i"
     private lazy var collectionView: FullscreenCollectionView = FullscreenCollectionView(view: self, cellViews: childViews)
+    private let collectionUserInteractionEnabled: Bool
     private lazy var didLayoutSubviews: Bool = false
     
     
@@ -26,9 +27,10 @@ open class SwipableFullscreenView: View {
     //---------------
     //  MARK: - Init
     //---------------
-    public init(childViews: [UIView], backgroundColor: UIColor = .white) {
+    public init(childViews: [UIView], backgroundColor: UIColor = .white, userInteractionEnabled: Bool = true) {
         self.childViews = childViews
         collectionColor = backgroundColor
+        collectionUserInteractionEnabled = userInteractionEnabled
         super.init(frame: .zero)
     }
 
@@ -47,6 +49,23 @@ open class SwipableFullscreenView: View {
         if didLayoutSubviews { return }
         setupUI()
         didLayoutSubviews = true
+    }
+    
+    
+    
+    //---------------------
+    //  MARK: - Public API
+    //---------------------
+    public func scrollToView(at index: Int) {
+        
+        guard (index <= childViews.count - 1) &&
+                (index >= 0) else {
+            print("The SwipableFullScreenView has no child view at index \(index), and is unable to scroll!")
+            return
+        }
+        
+        let indexPath: IndexPath = IndexPath(item: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     
@@ -74,6 +93,7 @@ open class SwipableFullscreenView: View {
     
     private func setupCollectionView() {
         
+        collectionView.isUserInteractionEnabled = collectionUserInteractionEnabled
         collectionView.register(FullscreenCollectionCell.self, forCellWithReuseIdentifier: cellID)
         collectionView.backgroundColor = collectionColor
         collectionView.delegate = self
