@@ -9,7 +9,7 @@ import UIKit
 
 
 /// Pass in a `GradientPair` with `color1` and `color2` representing the desired gradient shading from left to right, respectively.
-public class GradientPillButton: CustomButton {
+open class GradientPillButton: CustomButton {
     
     
     //----------------------
@@ -24,7 +24,7 @@ public class GradientPillButton: CustomButton {
     //---------------
     public init(gradientPair: GradientPair = GradientPair(color1: #colorLiteral(red: 0.9874046445, green: 0.1490907967, blue: 0.4583566785, alpha: 1), color2: #colorLiteral(red: 0.9902660251, green: 0.4092545509, blue: 0.3132936656, alpha: 1))) {
         self.gradientPair = gradientPair
-        super.init()
+        super.init(frame: .zero)
     }
     
     required public init?(coder: NSCoder) {
