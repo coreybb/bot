@@ -9,7 +9,7 @@ import UIKit
 
 
 //  TODO: - Consider replacing this implementation with a simpler one. Set a gradient view as the background of the view, and then simply put a view with the color of the developer's choice in front of it and round the corners.
-class HollowGradientView: View {
+open class HollowGradientView: View {
     
     
     //----------------------
