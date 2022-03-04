@@ -14,6 +14,7 @@ open class CustomButton: UIButton {
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required public init?(coder: NSCoder) {
