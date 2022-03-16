@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class EquallyDistributedHorizontalStackView: UIStackView {
+open class EquallyDistributedHorizontalStackView: UIStackView {
     
     public init(subviews: [UIView], spacing: CGFloat = 16) {
         super.init(frame: .zero)
@@ -19,7 +19,7 @@ public class EquallyDistributedHorizontalStackView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    required init(coder: NSCoder) {
+    required public init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
