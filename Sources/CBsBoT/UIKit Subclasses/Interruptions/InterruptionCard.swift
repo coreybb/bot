@@ -149,15 +149,16 @@ class InterruptionCard: SquircleView {
 
         let yDirection: CGFloat = gesture.translation(in: nil).y > 0 ? 1 : -1
 
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             [unowned self] in
 
             self.animateCard(in: yDirection, self.shouldDismiss(for: gesture))
         
-        }) { (_) in
-            
-            if self.shouldDismiss(for: gesture) {
-                self.removeFromSuperview()
+        }) {  [unowned self] (_) in
+             
+            if shouldDismiss(for: gesture) {
+                removeFromSuperview()
             }
         }
     }
@@ -172,15 +173,15 @@ class InterruptionCard: SquircleView {
 
         let offScreen: CGFloat = 1024 * yDirection
 
-        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.77, initialSpringVelocity: 0.4, options: .curveEaseOut) {
+        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.77,
+                       initialSpringVelocity: 0.4, options: .curveEaseOut) {
             [unowned self] in
+            
             transform = CGAffineTransform(translationX: 0, y: offScreen)
+            
         } completion: { _ in
             self.delegate?.superviewShouldDismiss()
         }
-
-        
-        
     }
 
     
